@@ -22,12 +22,12 @@ public class ElytraSwapperModClient implements ClientModInitializer {
 
             boolean isKeyPressed = KeybindManager.swapKey.isPressed();
             
-            // Обмен элитр
+            // Exchange Elytras
             if (isKeyPressed && !wasKeyPressed) {
                 swapElytraSafely(client.player);
             }
 
-            // Переключение автопрыжка
+            // Autojump
             if (KeybindManager.swapKey.wasPressed()) {
                 PressForJump = !PressForJump;
                 String message = PressForJump ? "§aElytraSwapper On" : "§cElytraSwapper Off";
@@ -41,9 +41,9 @@ public class ElytraSwapperModClient implements ClientModInitializer {
     public static void swapElytraSafely(PlayerEntity player) {
     MinecraftClient client = MinecraftClient.getInstance();
     
-    // 1. Ищем повреждённую элитру в инвентаре (но не в оффхенде)
+    // 1. Find broke elytra (no offhand)
     int damagedSlot = -1;
-    for (int i = 0; i < 36; i++) { // Только основные слоты инвентаря
+    for (int i = 0; i < 36; i++) { // to 36 slot
         ItemStack stack = player.getInventory().getStack(i);
         ItemStack ChestItemCheck = player.getEquippedStack(EquipmentSlot.CHEST);
         if (ChestItemCheck.getDamage() == 0){
@@ -67,7 +67,7 @@ public class ElytraSwapperModClient implements ClientModInitializer {
     }
         
 
-    // 2. Проверяем экипированные элитры
+    // 2. Checking chest
     ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
     ItemStack offhand = player.getEquippedStack(EquipmentSlot.OFFHAND);
     boolean shouldActivate = !chest.isOf(Items.ELYTRA) 
@@ -77,7 +77,7 @@ public class ElytraSwapperModClient implements ClientModInitializer {
                                 || chest.isOf(Items.LEATHER_CHESTPLATE)
                                 || chest.isOf(Items.GOLDEN_CHESTPLATE)
                                 || chest.isOf(Items.CHAINMAIL_CHESTPLATE);
-    // Если элитра в груди - меняем её
+    // If elytra in chest slot - swapping
     if (shouldActivate == true){
         swapSlotsSafely(client, player, 6, damagedSlot);
     }
