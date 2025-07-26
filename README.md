@@ -8,5 +8,6 @@ Usually, the module is bound to the "V" key, but you can change it by entering t
 
 2 module - MiddleClickElytra. By clicking the mouse wheel, you will equip the elytra by swapping it with either a broken elytra or a chestplate. If you do not want to use this module, enter the command shown below:
 <img width="336" height="140" alt="image" src="https://github.com/user-attachments/assets/800f1f1d-c221-41cb-929e-eafd99e7885b" />
+
 This mod will be improved. In the future, many modules will be added, as well as a HUD. It is possible that this modification will be combined with MeteorClient
 Stay tuned for updates and happy using :)
