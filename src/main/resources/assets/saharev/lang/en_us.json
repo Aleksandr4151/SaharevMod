@@ -1,0 +1,8 @@
+{
+  "key.elytraswapper.swap_elytra": "Swap Elytra",
+  "category.elytraswapper.keys": "Elytra Swapper",
+  "message.elytraswapper.swapped": "Swapped",
+  "message.elytraswapper.no_good_elytra": "No broken elytra found in inventory!",
+  "message.elytraswapper.not_wearing_elytra": "You are not wearing an elytra! Equip them.",
+  "message.elytraswapper.swapped2": "Swapped to a broken elytra in your OffHand!"
+}

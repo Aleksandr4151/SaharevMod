@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "elytra_swap",
+  "version": "${version}",
+  "name": "Elytra Swap Mod",
+  "description": "Useful client for stashhunters and other players.Based for the 2b2t.",
+  "authors": [
+    "Saharev(mc:saha2008)"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "MIT",
+  "icon": "assets/elytra_swap/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.MainEvent.Debug"
+    ],
+    "client": [
+      "com.example.Modules.elytraswapper.ElytraSwapperModClient",
+      "com.example.Modules.elytraswapper.ElytraSwapperAutoJump",
+      "com.example.Modules.elytraswapper.KeybindManager",
+      "com.example.Modules.MiddleClickElytra.MiddleClickConfig",
+      "com.example.Modules.MiddleClickElytra.MiddleClickElytra"    
+    ]
+  },
+  "mixins": [
+    "elytraswapper.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.4",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

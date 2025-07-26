@@ -1,0 +1,69 @@
+plugins {
+    id 'fabric-loom' version '1.5-SNAPSHOT' // Проверьте версию Loom
+    id 'org.jetbrains.kotlin.jvm' version '1.9.22' // Или ваша версия Kotlin
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url "https://maven.fabricmc.net/" }
+    maven { url "https://maven.terraformersmc.com/releases/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+loom {
+    
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.5"  // ВАЖНО: Точная версия Minecraft
+    mappings "net.fabricmc:yarn:1.21.5-rc2+build.1:v2" // ВАЖНО: Правильные маппинги!
+
+    modImplementation "net.fabricmc:fabric-loader:0.15.0"  // Fabric Loader (Проверьте версию)
+
+    // Fabric API - КРИТИЧНО: Укажите *совместимую* версию для 1.21.5!
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.119.5+1.21.5"  // Fabric API (Проверьте версию!)
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version" // Kotlin
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
+
+java.withSourcesJar()
+
+jar {
+    from "LICENSE"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/maven"
+        }
+    }
+}
